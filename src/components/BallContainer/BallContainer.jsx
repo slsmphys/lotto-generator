@@ -4,17 +4,17 @@ import BallContainerStyled from './BallContainerStyled'
 const BallContainer = ({
   numbers,
   game,
-  type
+  isMainBall = true
 }) => {
 
   return (
     <BallContainerStyled>
       {numbers.map(n => (
         <Ball
-          key={`${game}-${type}-${n}`}
+          key={`${game}-${isMainBall ? 'primary' : 'secondary'}-${n}`}
           number={n}
           game={game}
-          type={type}
+          isMainBall={isMainBall}
         />
       ))}
     </BallContainerStyled>

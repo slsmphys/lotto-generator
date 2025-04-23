@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Select, Button } from 'antd'
-import Ball from './components/Ball'
 import BallContainer from './components/BallContainer'
 import { GAMES, GAME_CONFIGS } from './consts'
 import { generateGameBalls } from './utils'
@@ -77,6 +76,8 @@ function App() {
   }
 
   function handleOnSelectGame(game) {
+    setPrimaryDraw([])
+    setSecondaryDraw([])
     setSelectedGame(game)
   }
 
@@ -93,18 +94,13 @@ function App() {
       />
       <Button type="primary" onClick={handleOnGenerate} disabled={!selectedGame}>Generate Numbers</Button>
       {primaryDraw.length > 0 && (
-        <BallContainer numbers={primaryDraw} game={selectedGame} />
+        <BallContainer numbers={primaryDraw} game={selectedGame} isMainBall={true} />
       )}
       {secondaryDraw.length > 0 && (
         <>
           <hr />
           <div>{secondaryDrawName}</div>
-          <ul>
-            {secondaryDraw.map(b => (
-              <Ball key={`primary-${b}`} number={b} game={selectedGame} />
-            ))}
-          </ul>
-          
+          <BallContainer numbers={secondaryDraw} game={selectedGame} isMainBall={false} />
         </>
       )}
     </>
