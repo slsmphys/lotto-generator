@@ -2,17 +2,17 @@ import BallStyled from './BallStyled'
 
 const BALL_COLOURS = {
   lottoWhite: '#ffffff',
-  lottoBlue: '#499bea',
-  lottoPink: '#ff0066',
-  lottoGreen: '#66cc33',
-  lottoYellow: '#ffcc00',
-  lottoPurple: '#990099',
-  euromillions: '#7f1734',
+  lottoBlue: '#a2c6ff',
+  lottoPink: '#f079bf',
+  lottoGreen: '#aeea8a',
+  lottoYellow: '#ffeb21',
+  lottoPurple: '#af7aba',
+  euromillions: '#fd5e49',
   luckyStar: '#ffd706',
   setForLife: '#ffffff',
-  lifeBall: '#00d6da',
-  thunderMain: '#a10f94',
-  thunderBall: '#b612a7'
+  lifeBall: '#01cbd9',
+  thunderMain: '#8a01c1',
+  thunderBall: '#b306ac'
 }
 
 const DEFAULT_COLOUR = '#ffffff'
@@ -22,6 +22,8 @@ const Ball = ({
   game,
   isMainBall
 }) => {
+  const label = number < 10 ? `0${number}` : number
+
   const getBallColor = (game, number, isMainBall) => {
     let color = DEFAULT_COLOUR
 
@@ -56,7 +58,9 @@ const Ball = ({
       color={getBallColor(game, number, isMainBall)}
       number={number}
     >
-      {number}
+      <div className="inner-panel">
+        {label}
+      </div>
     </BallStyled>
   )
 }

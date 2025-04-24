@@ -65,7 +65,7 @@ function App() {
     }
 
     setPrimaryDraw([ ...primaryDrawnBalls.sort((a, b) => a - b) ])
-    secondaryDrawnBalls.length && setSecondaryDraw(secondaryDrawnBalls)
+    secondaryDrawnBalls.length && setSecondaryDraw(secondaryDrawnBalls.sort((a, b) => a - b))
   }
 
   function handleOnGenerate() {
